@@ -21,3 +21,27 @@ function unDo() {
     document.getElementById('image').innerHTML = "Hover over an image below to display here.";
     console.log("Updated div text with original content")
 }
+function addTabFocus() {
+    console.log("Page loaded");
+
+    let images = document.querySelectorAll(".preview");
+
+    for (let i = 0; i < images.length; i++) {
+
+        images[i].setAttribute("tabindex", "0");
+
+        images[i].addEventListener("mouseover", function () {
+            upDate(this);
+        });
+
+        images[i].addEventListener("mouseout", unDo);
+
+        images[i].addEventListener("focus", function () {
+            upDate(this);
+        });
+
+        images[i].addEventListener("blur", unDo);
+    }
+}
+
+window.addEventListener("load", addTabFocus);
